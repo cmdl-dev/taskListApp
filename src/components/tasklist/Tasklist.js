@@ -1,5 +1,5 @@
 import React from "react";
-import Task from "../task/Task";
+import Task from "../task/task";
 
 const TaskList = ({ taskList, deleteTask, editTask }) => {
   return (

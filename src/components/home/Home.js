@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Tasklist from "../tasklist/Tasklist";
-import ModalForm from "../modalForm/ModalForm";
+import Tasklist from "../tasklist/tasklist";
+import ModalForm from "../modalForm/modalForm";
 
 const Home = () => {
   const sortOptions = [
