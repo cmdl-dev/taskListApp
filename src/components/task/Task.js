@@ -1,6 +1,9 @@
 import React from "react";
 
 const Task = ({ task, deleteTask, editTask, index }) => {
+  /**
+   * Setting up the optios for the color of the background based on the priority color
+   */
   const optionColors = {
     HIGH: "border-danger",
     MED: "border-warning",

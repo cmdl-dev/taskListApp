@@ -17,7 +17,7 @@ const TaskList = ({ taskList, deleteTask, editTask }) => {
           );
         })
       ) : (
-        <div>No Tasks. Please add one!</div>
+        <h3 className="text-center">No Tasks</h3>
       )}
     </div>
   );

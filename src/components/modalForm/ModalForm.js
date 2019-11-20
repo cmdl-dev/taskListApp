@@ -4,6 +4,9 @@ import $ from "jquery";
 import "../../../node_modules/react-datepicker/dist/react-datepicker.css";
 
 const ModalForm = ({ formInfo, addTask, closeModal }) => {
+  /**
+   * Setting the possible values for the priority options in the form
+   */
   const options = [
     {
       value: "LOW",
@@ -39,9 +42,11 @@ const ModalForm = ({ formInfo, addTask, closeModal }) => {
       closeModal();
     };
   }, []);
-  useEffect(() => {
-    console.log(formErrors);
-  }, [formErrors]);
+
+  /**
+   * Checks to see if the form is filled out if it is not then it adds the form error text
+   * if it is then call the function to add the task
+   */
   const verifyForm = () => {
     if (title.length === 0 || description.length === 0) {
       setFormErrors({
