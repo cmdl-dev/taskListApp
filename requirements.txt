@@ -1,0 +1,26 @@
+
+Under your github account, create a repo for this assignment.
+ 
+
+Using react-create-app, create a react app with the following implementation.
+ref: https://github.com/facebook/create-react-app
+
+ 
+
+1.      The application shows a list of tasks user input at 3)
+
+2.      Implement a link to a form on a modal to add a new task
+
+3.      On the form, user input the name of the task and choose a priority from a dropdown (with 3 choices of “high”, “medium” and “low”)
+
+4.      The list of tasks is sortable by the priority.
+
+5.      User can delete the task.
+
+6.      User can edit the task.
+
+7.      Task data is stored in session storage.
+
+ 
+
+Please send us the link to the github repo you created.
