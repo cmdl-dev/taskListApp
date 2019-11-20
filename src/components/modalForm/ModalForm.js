@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import DatePicker from "react-datepicker";
 import $ from "jquery";
+import "../../../node_modules/react-datepicker/dist/react-datepicker.css";
 
 const ModalForm = ({ formInfo, addTask, closeModal }) => {
   const options = [
@@ -21,6 +23,13 @@ const ModalForm = ({ formInfo, addTask, closeModal }) => {
   const [priority, setPriority] = useState(
     formInfo.priority || options[0].value
   );
+  const [dueDate, setDueDate] = useState(
+    new Date(formInfo.dueDate || new Date())
+  );
+  const [startDate, setStartDate] = useState(
+    new Date(formInfo.startDate || new Date())
+  );
+  const [formErrors, setFormErrors] = useState({ title: "", description: "" });
 
   useEffect(() => {
     $("#modalForm").modal("show");
@@ -30,8 +39,18 @@ const ModalForm = ({ formInfo, addTask, closeModal }) => {
       closeModal();
     };
   }, []);
+  useEffect(() => {
+    console.log(formErrors);
+  }, [formErrors]);
   const verifyForm = () => {
-    addTask({ title, description, priority });
+    if (title.length === 0 || description.length === 0) {
+      setFormErrors({
+        title: title.length === 0 ? "Please add a title" : "",
+        description: description.length === 0 ? "Please add a descrption" : "",
+      });
+    } else {
+      addTask({ title, description, priority, dueDate, startDate });
+    }
   };
   return (
     <div
@@ -63,21 +82,33 @@ const ModalForm = ({ formInfo, addTask, closeModal }) => {
                 <label htmlFor="title">Title</label>
                 <input
                   type="text"
-                  className="form-control"
+                  className={`form-control ${
+                    formErrors.title.length > 0 ? "is-invalid" : ""
+                  }`}
                   placeholder="Enter Title"
                   value={title}
                   onChange={e => setTitle(e.target.value)}
                 />
+                {formErrors.title.length > 0 && (
+                  <div className="invalid-feedback">{formErrors.title}</div>
+                )}
               </div>
               <div className="form-group">
-                <label htmlFor="description">Description</label>
+                <label htmlFor="description">Description</label>{" "}
                 <input
                   type="text"
-                  className="form-control"
+                  className={`form-control ${
+                    formErrors.description.length > 0 ? "is-invalid" : ""
+                  }`}
                   placeholder="Enter Description"
                   value={description}
                   onChange={e => setDescription(e.target.value)}
                 />
+                {formErrors.description.length > 0 && (
+                  <div className="invalid-feedback">
+                    {formErrors.description}
+                  </div>
+                )}
               </div>
               <div className="form-group">
                 <label htmlFor="priority">Priority</label>
@@ -95,6 +126,17 @@ const ModalForm = ({ formInfo, addTask, closeModal }) => {
                     );
                   })}
                 </select>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="dueDate">Due Date</label>
+                <br></br>
+                <DatePicker
+                  className="form-control"
+                  id="dueDate"
+                  selected={dueDate}
+                  onChange={date => setDueDate(date)}
+                />
               </div>
               <div className="modal-footer">
                 <button

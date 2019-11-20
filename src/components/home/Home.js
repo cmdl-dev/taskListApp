@@ -6,6 +6,8 @@ const Home = () => {
   const sortOptions = [
     { value: "PriorityASC", text: "Priority - ASC" },
     { value: "PriorityDSC", text: "Priority - DESC" },
+    { value: "DueASC", text: "Due Date - ASC" },
+    { value: "DueDSC", text: "Due Date - DESC" },
   ];
   const optionValue = {
     LOW: 1,
@@ -51,9 +53,6 @@ const Home = () => {
       return arr;
     }
     switch (filterOption) {
-      case "NONE":
-        break;
-
       case "PriorityDSC":
         arr.sort((a, b) => {
           if (optionValue[a.priority] < optionValue[b.priority]) {
@@ -70,6 +69,29 @@ const Home = () => {
           if (optionValue[a.priority] > optionValue[b.priority]) {
             return 1;
           } else if (optionValue[a.priority] < optionValue[b.priority]) {
+            return -1;
+          }
+          return 0;
+        });
+        break;
+      case "DueASC":
+        arr.sort((a, b) => {
+          // console.log(a.dueDate, b.dueDate, a.dueDate > b.dueDate);
+          if (a.dueDate > b.dueDate) {
+            return 1;
+          } else if (a.dueDate < b.dueDate) {
+            return -1;
+          }
+          return 0;
+        });
+        break;
+
+      case "DueDSC":
+        arr.sort((a, b) => {
+          // console.log(a.dueDate, b.dueDate, a.dueDate < b.dueDate);
+          if (a.dueDate < b.dueDate) {
+            return 1;
+          } else if (a.dueDate > b.dueDate) {
             return -1;
           }
           return 0;
