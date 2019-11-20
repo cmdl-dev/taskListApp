@@ -16,11 +16,11 @@ const Task = ({ task, deleteTask, editTask, index }) => {
     >
       <div className="card-body">
         <div className="row">
-          <h3 className="col-md-8">
+          <h3 className="col-md-9 col-12">
             {task.title} -{" "}
             <small>{new Date(task.dueDate).toDateString()}</small>
           </h3>
-          <div className="btn-group col-md-4 ml-auto" role="group">
+          <div className="btn-group col-md-3 col-6 ml-auto" role="group">
             <button
               className="btn btn-danger btn-sm"
               onClick={() => deleteTask(index)}

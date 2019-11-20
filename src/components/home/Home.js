@@ -158,7 +158,7 @@ const Home = () => {
         <h2 className="card-title text-center">Task List</h2>
         <div className="row">
           <select
-            className="form-control form-control-sm col-md-3"
+            className="form-control form-control-sm col-md-3 col-5"
             value={filterOption}
             onChange={e => setFilterOption(e.target.value)}
           >
@@ -171,7 +171,7 @@ const Home = () => {
             })}
           </select>
           <button
-            className="col-md-2 btn btn-primary btn-sm ml-auto"
+            className="col-md-2 col-6 btn btn-primary btn-sm ml-auto"
             type="button"
             onClick={handleShowModal}
           >
